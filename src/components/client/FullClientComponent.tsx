@@ -1,9 +1,10 @@
 'use client';
 
+import { TestModel } from '@/models/test.model';
 import { useEffect, useState } from 'react';
 
 const FullClientComponent = () => {
-  const [data, setData] = useState<any>(null);
+  const [data, setData] = useState<TestModel>();
 
   useEffect(() => {
     fetch('https://jsonplaceholder.typicode.com/todos/1')

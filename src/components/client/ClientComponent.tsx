@@ -1,6 +1,8 @@
 'use client';
 
-const ClientComponent = (props: { data: any }) => {
+import { TestModel } from "@/models/test.model";
+
+const ClientComponent = (props: { data: TestModel }) => {
   const { data } = props;
 
   return (
