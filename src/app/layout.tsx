@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <nav className="bg-black w-full h-full"></nav>
+        <nav></nav>
         {children}
       </body>
     </html>
