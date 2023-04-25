@@ -1,8 +1,8 @@
-import './globals.css';
+import "./globals.css";
 
 export const metadata = {
-  title: 'PadelWeb',
-  description: 'Nari17 TFG',
+  title: "PadelWeb",
+  description: "Nari17 TFG",
 };
 
 export default function RootLayout({
@@ -13,7 +13,7 @@ export default function RootLayout({
   return (
     <html>
       <body>
-        <nav className="bg-black w-full h-8"></nav>
+        <nav className="bg-black w-full h-full"></nav>
         {children}
       </body>
     </html>
