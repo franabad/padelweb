@@ -1,10 +1,12 @@
-import { ServerComponent } from "@/components/server/ServerComponent";
+import Navbar from "../components/client/navbar";
+import "./globals.css";
 
-export default function Home() {
+const Page = () => {
   return (
-    <main>
-      {/* @ts-expect-error */}
-      <ServerComponent userId='1' />
-    </main>
+    <div>
+      <Navbar />
+    </div>
   );
-}
+};
+
+export default Page;
