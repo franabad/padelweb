@@ -24,11 +24,11 @@ const NavLinks = () => {
       {links.map((link, id) => (
         <div key={id}>
           <div className="cursor-pointer group">
-            <h1 className="hover:text-white">{link.name}</h1>
+            <h1 className="text-white hover:text-yellow-400">{link.name}</h1>
             {link.submenu && (
               <div>
                 <div className="absolute hidden group-hover:block hover:block">
-                  <div className="bg-slate-400 p-3">
+                  <div className="bg-slate-400 p-3 border-2 border-black">
                     {link.sublinks.map((mysublinks, id) => (
                       <div key={id}>
                         {mysublinks.sublink.map((slink, id) => (
