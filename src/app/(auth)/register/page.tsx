@@ -1,5 +1,7 @@
+import RegisterForm from '@/components/client/registerForm';
+
 const RegisterPage: React.FC = () => {
-  return <div></div>;
+  return <RegisterForm />;
 };
 
 export default RegisterPage;
