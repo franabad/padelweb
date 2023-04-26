@@ -1,15 +1,15 @@
-import React from 'react';
-import '../globals.css';
+import React from 'react'
+import '../globals.css'
 
 export const metadata = {
   title: 'Login',
-  description: 'Nari17 TFG',
-};
+  description: 'Nari17 TFG'
+}
 
-export default function RootLayout({
-  children,
+export default function RootLayout ({
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html>
@@ -17,5 +17,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }

@@ -1,5 +1,5 @@
-import React from 'react';
-import Link from 'next/link';
+import React from 'react'
+import Link from 'next/link'
 
 const Auth = () => {
   return (
@@ -19,7 +19,7 @@ const Auth = () => {
         Registrarse
       </Link>
     </div>
-  );
-};
+  )
+}
 
-export default Auth;
+export default Auth

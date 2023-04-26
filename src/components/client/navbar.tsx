@@ -1,7 +1,7 @@
-'use client';
-import Link from 'next/link';
-import Auth from './auth';
-import Services from './services';
+'use client'
+import Link from 'next/link'
+import Auth from './auth'
+import Services from './services'
 
 const NavBar = () => {
   return (
@@ -50,7 +50,7 @@ const NavBar = () => {
         </div>
       </div>
     </nav>
-  );
-};
+  )
+}
 
-export default NavBar;
+export default NavBar
