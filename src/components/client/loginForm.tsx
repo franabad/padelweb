@@ -19,6 +19,7 @@ const LoginForm = () => {
     }).then(async res => await res.json())
       .then(data => { console.log(data.token) })
       .catch(err => { console.log(err) })
+    console.log(data)
   }
 
   return (
