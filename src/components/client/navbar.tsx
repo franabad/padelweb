@@ -1,6 +1,6 @@
 'use client';
 import Link from 'next/link';
-import Button from './button';
+import LoginButton from './button';
 import Services from './services';
 
 const NavBar = () => {
@@ -46,7 +46,7 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="relative">
-          <Button />
+          <LoginButton />
         </div>
       </div>
     </nav>
