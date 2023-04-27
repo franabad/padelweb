@@ -15,9 +15,10 @@ const LoginForm = () => {
       body: JSON.stringify(data),
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      credentials: 'include'
     }).then(async res => await res.json())
-      .then(data => { console.log(data.token) })
+      // .then(data => { console.log(data.token) })
       .catch(err => { console.log(err) })
     console.log(data)
   }
