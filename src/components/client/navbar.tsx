@@ -2,8 +2,28 @@
 import Link from 'next/link'
 import Auth from './authButtons'
 import Services from './services'
+import { useEffect, useState } from 'react'
 
 const NavBar = () => {
+  const [loggedIn, setLoggedIn] = useState(false)
+
+  useEffect(() => {
+    const checkLoginStatus = async () => {
+      try {
+        const response = await fetch('http://localhost:4000/login', {
+          method: 'GET',
+          credentials: 'include'
+        })
+        if (response.ok) {
+          setLoggedIn(true)
+        }
+      } catch (error) {
+        console.error('Error al comprobar el estado de inicio de sesión: ', error)
+      }
+    }
+    // eslint-disable-next-line @typescript-eslint/no-floating-promises
+    checkLoginStatus()
+  }, [])
   return (
     <nav className="bg-white/20 rounded-2xl shadow-[0_4px_30px_rgba(0,_0,_0,_0.1)] backdrop-blur-[10px] border-[1px] border-solid border-white/30 mx-8 py-4 grid place-items-center grid-cols-[1fr_64px_1fr] grid-rows-1">
       <div className="col-span-1 flex items-center justify-evenly w-full">
@@ -46,7 +66,13 @@ const NavBar = () => {
           </Link>
         </div>
         <div className="relative">
-          <Auth />
+          {loggedIn
+            ? (
+            <p>Tu perfil</p>
+              )
+            : (
+            <Auth />
+              )}
         </div>
       </div>
     </nav>
