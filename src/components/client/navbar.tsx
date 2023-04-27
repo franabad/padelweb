@@ -1,6 +1,6 @@
 'use client'
 import Link from 'next/link'
-import Auth from './auth'
+import Auth from './authButtons'
 import Services from './services'
 
 const NavBar = () => {
