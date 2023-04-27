@@ -56,7 +56,7 @@ const LoginForm = () => {
             id="password"
             {...register('password', {
               required: 'required',
-              minLength: 8
+              minLength: 4
             })}
           />
         </div>
