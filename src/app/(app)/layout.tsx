@@ -1,21 +1,21 @@
-import '../globals.css';
-import NavBar from '@/components/client/navbar';
-import { Montserrat } from 'next/font/google';
+import '../globals.css'
+import NavBar from '@/components/client/navbar'
+import { Montserrat } from 'next/font/google'
 
 export const metadata = {
   title: 'PadelWeb',
-  description: 'Nari17 TFG',
-};
+  description: 'Nari17 TFG'
+}
 
 const montserrat = Montserrat({
   subsets: ['latin'],
-  display: 'swap',
+  display: 'swap'
 })
 
-export default function RootLayout({
-  children,
+export default function RootLayout ({
+  children
 }: {
-  children: React.ReactNode;
+  children: React.ReactNode
 }) {
   return (
     <html className={montserrat.className}>
@@ -24,5 +24,5 @@ export default function RootLayout({
         {children}
       </body>
     </html>
-  );
+  )
 }
