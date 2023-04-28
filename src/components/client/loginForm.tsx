@@ -12,7 +12,7 @@ const LoginForm = () => {
   } = useForm()
 
   const onSubmit = (data: any) => {
-    fetch('http://localhost:4000/login', {
+    fetch('https://backend-padel-rho.vercel.app/login', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
