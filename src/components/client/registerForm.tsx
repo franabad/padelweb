@@ -22,11 +22,9 @@ const LoginForm = () => {
     }).then(async res => await res.json())
       .then(data => { console.log(session) })
       .catch(err => { console.log(err) })
-    console.log(data)
   }
 
   const { data: session } = useSession()
-  console.log(session)
 
   return (
     <section className="bg-gray-900/90">

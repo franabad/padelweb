@@ -11,10 +11,15 @@ export const authOptions: NextAuthOptions = {
       // e.g. domain, username, password, 2FA token, etc.
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
-        email: { label: 'Email', type: 'text', placeholder: 'Email', className: 'border-gray-300 p-2' },
+        email: {
+          label: 'Email',
+          type: 'text',
+          placeholder: 'Email',
+          className: 'border-gray-300 p-2'
+        },
         password: { label: 'Password', type: 'password' }
       },
-      async authorize (credentials, req) {
+      async authorize(credentials, req) {
         // You need to provide your own logic here that takes the credentials
         // submitted and returns either a object representing a user or value
         // that is false/null if the credentials are invalid.
@@ -27,7 +32,6 @@ export const authOptions: NextAuthOptions = {
           headers: { 'Content-Type': 'application/json' }
         })
         const user = await res.json()
-        console.log(user, credentials)
 
         // If no error and we have user data, return it
         if (user !== undefined) {

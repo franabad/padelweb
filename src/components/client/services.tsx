@@ -1,19 +1,19 @@
-import Link from 'next/link';
-import { useState } from 'react';
+import Link from 'next/link'
+import { useState } from 'react'
 
 const links = [
   { title: 'Tenis', href: '/tenis' },
   { title: 'Piscina', href: '/piscina' },
   { title: 'Informática', href: '/informatica' },
-  { title: 'Restaurante', href: '/restaurante' },
-];
+  { title: 'Restaurante', href: '/restaurante' }
+]
 
 const Services = () => {
-  const [showServices, setShowServices] = useState<boolean>(false);
+  const [showServices, setShowServices] = useState<boolean>(false)
 
   return (
     <div
-      className="relative text-black font-bold hover:text-blue-700 hover:cursor-pointer"
+      className="relative text-white font-bold hover:text-blue-700 hover:cursor-pointer"
       onMouseEnter={() => setShowServices(true)}
       onMouseLeave={() => setShowServices(false)}
     >
@@ -35,7 +35,7 @@ const Services = () => {
         ))}
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Services;
+export default Services
