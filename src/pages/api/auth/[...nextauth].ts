@@ -14,8 +14,7 @@ export const authOptions: NextAuthOptions = {
         email: {
           label: 'Email',
           type: 'text',
-          placeholder: 'Email',
-          className: 'border-gray-300 p-2'
+          placeholder: 'Email'
         },
         password: { label: 'Password', type: 'password' }
       },
