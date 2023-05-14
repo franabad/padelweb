@@ -13,9 +13,13 @@ const Services = () => {
 
   return (
     <div
-      className="relative text-white font-bold hover:text-blue-700 hover:cursor-pointer"
-      onMouseEnter={() => setShowServices(true)}
-      onMouseLeave={() => setShowServices(false)}
+      className="relative text-white hover:text-blue-700 hover:cursor-pointer"
+      onMouseEnter={() => {
+        setShowServices(true)
+      }}
+      onMouseLeave={() => {
+        setShowServices(false)
+      }}
     >
       <span>Servicios</span>
       <ul
