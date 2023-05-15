@@ -5,6 +5,8 @@ import { signIn, useSession } from 'next-auth/react'
 const Auth = () => {
   const { data: session } = useSession()
 
+  console.log(session)
+
   return (
     <div className="flex">
       {session?.user != null ? (
@@ -13,7 +15,7 @@ const Auth = () => {
         <>
           <button
             id="login"
-            className="bg-transparent hover:text-gray-300 text-white font-bold py-2 px-4 rounded-lg mr-5"
+            className="bg-transparent hover:text-gray-300 text-white font-bold py-2 px-4 rounded-lg mr-2"
             // href="/login"
             // eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/promise-function-async
             onClick={() => signIn()}
@@ -22,7 +24,7 @@ const Auth = () => {
           </button>
           <Link
             id="register"
-            className="bg-transparent text-white hover:text-gray-300 hover:bg-slate-950/100 font-bold py-2 px-4 border border-white rounded-lg"
+            className="bg-transparent text-white hover:text-gray-300 hover:bg-slate-950/100 font-bold py-2 px-3 border border-white rounded-lg"
             href="/register"
           >
             Sign up

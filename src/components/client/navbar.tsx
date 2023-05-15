@@ -5,13 +5,13 @@ import Services from './services'
 
 const NavBar = () => {
   return (
-    <nav className="bg-slate-950/95 top-0">
-      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-        <ul className="flex items-center justify-between bg-transparent font-medium w-full">
+    <nav className="bg-slate-950 w-full flex py-6 justify-between items-center navbar">
+      <div className="list-none flex justify-end items-center flex-1">
+        <ul className="list-none flex justify-end items-center flex-1">
           <li>
             <Link
               href="/"
-              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mr-20"
             >
               Inicio
             </Link>
@@ -19,7 +19,7 @@ const NavBar = () => {
           <li>
             <Link
               href="/about"
-              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent mr-20"
             >
               Nosotros
             </Link>
@@ -30,12 +30,20 @@ const NavBar = () => {
           <li>
             <Link
               href="/faq"
-              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ml-20"
+            >
+              Prices
+            </Link>
+          </li>
+          <li>
+            <Link
+              href="/faq"
+              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ml-20"
             >
               FAQ
             </Link>
           </li>
-          <li>
+          <li className='mr-20 ml-20'>
             <Auth />
           </li>
         </ul>
