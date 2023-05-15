@@ -4,8 +4,10 @@ import '../../app/globals.css'
 import { useSession } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 // import { useEffect } from 'react'
+import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
+  const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -24,6 +26,7 @@ const LoginForm = () => {
       .then(async (res) => await res.json())
       .then((data) => {
         console.log(session)
+        router.push('/')
       })
       .catch((err) => {
         console.log(err)
