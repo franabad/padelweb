@@ -5,7 +5,7 @@ import Services from './services'
 
 const NavBar = () => {
   return (
-    <nav className="bg-gray-900/90 shadow-[0_4px_30px_rgba(0,_0,_0,_0.1)] backdrop-blur-[10px] top-0">
+    <nav className="bg-slate-950/95 top-0">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
         <ul className="flex items-center justify-between bg-transparent font-medium w-full">
           <li>

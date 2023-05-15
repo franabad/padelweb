@@ -3,6 +3,7 @@
 import '../../app/globals.css'
 import { useSession } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
+// import { useEffect } from 'react'
 
 const LoginForm = () => {
   const {
@@ -12,7 +13,7 @@ const LoginForm = () => {
   } = useForm()
 
   const onSubmit = (data: any) => {
-    fetch('https://backend-padel-rho.vercel.app/login', {
+    fetch('http://localhost:4000/login', {
       method: 'POST',
       body: JSON.stringify(data),
       headers: {
@@ -32,16 +33,15 @@ const LoginForm = () => {
   const { data: session } = useSession()
 
   return (
-    <section className="bg-gray-900/80 backdrop-blur-md">
+    <section className="bg-slate-950/95">
       <div className="flex flex-col items-center justify-center px-6 py-8 md:h-screen lg:py-0">
-        <div className="w-full md:w-1/2 bg-cover bg-center bg-no-repeat bg-[url('../../public/assets/fondo.jpg')]"></div>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-          <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
+        <div className="w-full bg-slate-950/95 rounded-full md:mt-0 sm:max-w-md xl:p-0">
+          <div className="bg-slate-950/95 p-6 space-y-4 ">
             <h1 className="text-center text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Sign into your account
             </h1>
             <form
-              className="space-y-4 md:space-y-6"
+              className="space-y-4 bg-transparent"
               // eslint-disable-next-line @typescript-eslint/no-misused-promises
               onSubmit={handleSubmit(onSubmit)}
             >

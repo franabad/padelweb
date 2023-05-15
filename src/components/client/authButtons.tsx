@@ -13,19 +13,19 @@ const Auth = () => {
         <>
           <button
             id="login"
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-l-3xl"
+            className="bg-transparent hover:text-gray-300 text-white font-bold py-2 px-4 rounded-lg mr-5"
             // href="/login"
             // eslint-disable-next-line @typescript-eslint/no-misused-promises, @typescript-eslint/promise-function-async
             onClick={() => signIn()}
           >
-            Iniciar sesión
+            Sign in
           </button>
           <Link
             id="register"
-            className="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-r-3xl"
+            className="bg-transparent text-white hover:text-gray-300 hover:bg-slate-950/100 font-bold py-2 px-4 border border-white rounded-lg"
             href="/register"
           >
-            Registrarse
+            Sign up
           </Link>
         </>
       )}
