@@ -8,8 +8,13 @@ export default function RootLayout({
 }) {
   return (
     <>
-      <NavBar />
-      {children}
+      <div className='relative overflow-hidden min-h-screen'>
+        <NavBar />
+        <div className="relative pt-16">
+          <div className="absolute inset-0 bg-slate-950/95 w-screen h-screen"></div>
+          <div className="relative z-10">{children}</div>
+        </div>
+      </div>
     </>
   )
 }
