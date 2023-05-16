@@ -1,4 +1,4 @@
-import Auth from '@/components/client/authButtons'
+import Auth from '@/components/server/authButtons'
 import NavBar from '@/components/client/navbar'
 import '../globals.css'
 
