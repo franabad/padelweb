@@ -10,7 +10,7 @@ const Auth = () => {
   return (
     <div className="flex">
       {session?.user != null ? (
-        <p>Mi perfil</p>
+        <p className='text-white'>Mi perfil</p>
       ) : (
         <>
           <button
