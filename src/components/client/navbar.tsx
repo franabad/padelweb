@@ -1,9 +1,9 @@
 'use client'
 import Link from 'next/link'
-import Auth from './authButtons'
 import Services from './services'
+import { type ReactNode } from 'react'
 
-const NavBar = () => {
+const NavBar = ({ children }: { children: ReactNode }) => {
   return (
     <nav className="bg-slate-950 w-full flex py-6 justify-between items-center navbar">
       <div className="list-none flex justify-end items-center flex-1">
@@ -43,9 +43,7 @@ const NavBar = () => {
               FAQ
             </Link>
           </li>
-          <li className='mr-20 ml-20'>
-            <Auth />
-          </li>
+          <li className="mr-20 ml-20">{children}</li>
         </ul>
       </div>
     </nav>

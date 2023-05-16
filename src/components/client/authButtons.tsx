@@ -1,16 +1,17 @@
-import React from 'react'
+import { signIn } from 'next-auth/react'
 import Link from 'next/link'
-import { signIn, useSession } from 'next-auth/react'
+import { authOptions } from '../../pages/api/auth/[...nextauth]'
+import { getServerSession } from 'next-auth/next'
 
-const Auth = () => {
-  const { data: session } = useSession()
+const Auth = async () => {
+  const session = await getServerSession(authOptions)
 
   console.log(session)
 
   return (
     <div className="flex">
       {session?.user != null ? (
-        <p className='text-white'>Mi perfil</p>
+        <p className="text-white">Mi perfil</p>
       ) : (
         <>
           <button
