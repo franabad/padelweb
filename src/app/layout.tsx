@@ -4,6 +4,13 @@ import './globals.css'
 import { Montserrat } from 'next/font/google'
 import { SessionProvider } from 'next-auth/react'
 
+// import { getServerSession } from 'next-auth'
+// import { authOptions } from '../pages/api/auth/[...nextauth]'
+
+// const session = getServerSession(authOptions)
+
+// console.log(session)
+
 const montserrat = Montserrat({
   subsets: ['latin'],
   display: 'swap'

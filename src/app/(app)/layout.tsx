@@ -1,12 +1,19 @@
 import Auth from '@/components/server/authButtons'
 import NavBar from '@/components/client/navbar'
 import '../globals.css'
+import { getServerSession } from 'next-auth'
+import { authOptions } from '../../pages/api/auth/[...nextauth]'
 
 export default async function RootLayout({
+
   children
 }: {
   children: React.ReactNode
 }) {
+  const session = await getServerSession(authOptions)
+
+  console.log(session)
+
   return (
     <>
       <div className="relative overflow-hidden min-h-screen">

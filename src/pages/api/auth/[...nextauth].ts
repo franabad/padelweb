@@ -34,7 +34,8 @@ export const authOptions: NextAuthOptions = {
         const user = await res.json()
 
         // If no error and we have user data, return it
-        if (user !== undefined) {
+        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
+        if (user) {
           return user
         }
         // Return null if user data could not be retrieved
@@ -44,7 +45,7 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: 'jwt',
-    maxAge: 10 // 30 days
+    maxAge: 10
   },
 
   pages: {
