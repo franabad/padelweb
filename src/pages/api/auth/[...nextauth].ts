@@ -28,7 +28,8 @@ export const authOptions: NextAuthOptions = {
         const res = await fetch('http://localhost:4000/login', {
           method: 'POST',
           body: JSON.stringify(credentials),
-          headers: { 'Content-Type': 'application/json' }
+          headers: { 'Content-Type': 'application/json' },
+          credentials: 'include'
         })
         const user = await res.json()
 
@@ -43,7 +44,7 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: 'jwt',
-    maxAge: 30 * 24 * 60 * 60 // 30 days
+    maxAge: 10 // 30 days
   },
 
   pages: {
