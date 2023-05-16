@@ -1,36 +1,25 @@
 'use client'
 
 import '../../app/globals.css'
-import { useSession } from 'next-auth/react'
+import { useSession, signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
 // import { useEffect } from 'react'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
-  const router = useRouter()
+  // const router = useRouter()
   const {
     register,
     handleSubmit,
     formState: { errors }
   } = useForm()
 
-  const onSubmit = (data: any) => {
-    fetch('http://localhost:4000/login', {
-      method: 'POST',
-      body: JSON.stringify(data),
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      credentials: 'include'
+  const onSubmit = async (data: any) => {
+    await signIn('credentials', {
+      email: data.email,
+      password: data.password,
+      callbackUrl: '/'
     })
-      .then(async (res) => await res.json())
-      .then((data) => {
-        console.log(session)
-        router.push('/')
-      })
-      .catch((err) => {
-        console.log(err)
-      })
   }
 
   const { data: session } = useSession()
