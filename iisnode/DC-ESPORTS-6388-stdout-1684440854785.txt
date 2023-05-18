@@ -1,0 +1,27 @@
+info  - Loaded env from E:\PROYECTO\frontend\.env
+info  - Thank you for testing `appDir` please leave your feedback at https://nextjs.link/app-feedback
+> Ready on http://localhost:\\.\pipe\e63ba0a4-557d-4750-b638-45d3052a509e
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null
+null

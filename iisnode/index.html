@@ -1,0 +1,87 @@
+<html>
+<head>
+    <title>iisnode logs</title>
+    <style type="text/css">
+        body
+        {
+            font-family: "Trebuchet MS" , Arial, Helvetica, sans-serif;
+        }
+        table
+        {
+            border-collapse: collapse;
+        }
+        td, th
+        {
+            border: 1px solid lightgray;
+            padding: 3px 7px 2px 7px;
+        }
+        th
+        {
+            text-align: left;
+            padding-top: 5px;
+            padding-bottom: 4px;
+            background-color: Gray;
+            color: #ffffff;
+        }
+        td.stderr
+        {
+            color: Red;
+        }
+    </style>
+</head>
+<body>
+    <table id="logFilesTable">
+        <tr>
+            <th>
+                Computer name
+            </th>
+            <th>
+                PID
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Created
+            </th>
+            <th>
+                Link
+            </th>
+        </tr>
+    </table>
+    <p id="lastUpdated"></p>
+    <script type="text/javascript">
+
+        // this is replaced with actual data at runtime by code in interceptor.js
+        var logFiles = [{"file":"DC-ESPORTS-1008-stderr-1684430711393.txt","computername":"DC-ESPORTS","pid":1008,"type":"stderr","created":1684430711393},{"file":"DC-ESPORTS-1008-stdout-1684430711392.txt","computername":"DC-ESPORTS","pid":1008,"type":"stdout","created":1684430711392},{"file":"DC-ESPORTS-1756-stderr-1684430734813.txt","computername":"DC-ESPORTS","pid":1756,"type":"stderr","created":1684430734813},{"file":"DC-ESPORTS-1756-stdout-1684430734812.txt","computername":"DC-ESPORTS","pid":1756,"type":"stdout","created":1684430734812},{"file":"DC-ESPORTS-2312-stderr-1684431307387.txt","computername":"DC-ESPORTS","pid":2312,"type":"stderr","created":1684431307387},{"file":"DC-ESPORTS-2312-stdout-1684431307385.txt","computername":"DC-ESPORTS","pid":2312,"type":"stdout","created":1684431307385},{"file":"DC-ESPORTS-2564-stderr-1684440279514.txt","computername":"DC-ESPORTS","pid":2564,"type":"stderr","created":1684440279514},{"file":"DC-ESPORTS-2564-stdout-1684440279496.txt","computername":"DC-ESPORTS","pid":2564,"type":"stdout","created":1684440279496},{"file":"DC-ESPORTS-4956-stderr-1684430712296.txt","computername":"DC-ESPORTS","pid":4956,"type":"stderr","created":1684430712296},{"file":"DC-ESPORTS-4956-stdout-1684430712295.txt","computername":"DC-ESPORTS","pid":4956,"type":"stdout","created":1684430712295},{"file":"DC-ESPORTS-5800-stderr-1684430735940.txt","computername":"DC-ESPORTS","pid":5800,"type":"stderr","created":1684430735940},{"file":"DC-ESPORTS-5800-stdout-1684430735939.txt","computername":"DC-ESPORTS","pid":5800,"type":"stdout","created":1684430735939},{"file":"DC-ESPORTS-5960-stderr-1684439767839.txt","computername":"DC-ESPORTS","pid":5960,"type":"stderr","created":1684439767839},{"file":"DC-ESPORTS-5960-stdout-1684439767837.txt","computername":"DC-ESPORTS","pid":5960,"type":"stdout","created":1684439767837},{"file":"DC-ESPORTS-6284-stderr-1684430814142.txt","computername":"DC-ESPORTS","pid":6284,"type":"stderr","created":1684430814142},{"file":"DC-ESPORTS-6284-stdout-1684430814138.txt","computername":"DC-ESPORTS","pid":6284,"type":"stdout","created":1684430814138},{"file":"DC-ESPORTS-6388-stderr-1684440854787.txt","computername":"DC-ESPORTS","pid":6388,"type":"stderr","created":1684440854787},{"file":"DC-ESPORTS-6388-stdout-1684440854785.txt","computername":"DC-ESPORTS","pid":6388,"type":"stdout","created":1684440854785}];
+        var lastUpdated = 1684440854873;
+        var date = new Date();
+
+        date.setTime(lastUpdated);
+        document.getElementById('lastUpdated').innerHTML = 'Index was last updated ' + date;
+
+        logFiles.sort(function (a, b) {
+            return b.created - a.created;
+        });
+
+        var logFilesTable = document.getElementById("logFilesTable");
+        for (var i = 0; i < logFiles.length; i++) {
+            var logFile = logFiles[i];
+            date.setTime(logFile.created);
+            var row = logFilesTable.insertRow(-1);
+            var computerNameCell = row.insertCell(0);
+            var pidCell = row.insertCell(1);
+            var typeCell = row.insertCell(2);
+            var dateCell = row.insertCell(3);
+            var logCell = row.insertCell(4);
+            computerNameCell.innerHTML = logFile.computername;
+            pidCell.innerHTML = logFile.pid.toString();
+            typeCell.innerHTML = logFile.type;
+            typeCell.setAttribute('class', logFile.type);
+            dateCell.innerHTML = date.toString();
+            logCell.innerHTML = '<a href="' + logFile.file + '">log</a>';
+        };
+
+    </script>
+</body>
+</html>

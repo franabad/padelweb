@@ -1,0 +1,13 @@
+(node:4956) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+warn  - You have enabled experimental feature (appDir) in next.config.js.
+warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+Application has thrown an uncaught exception and is terminated:
+Error: Could not find a production build in the 'E:\PROYECTO\frontend\.next' directory. Try building your app with 'next build' before starting the production server. https://nextjs.org/docs/messages/production-start-no-build-id
+    at NextNodeServer.getBuildId (E:\PROYECTO\frontend\node_modules\next\dist\server\next-server.js:198:23)
+    at new Server (E:\PROYECTO\frontend\node_modules\next\dist\server\base-server.js:68:29)
+    at new NextNodeServer (E:\PROYECTO\frontend\node_modules\next\dist\server\next-server.js:70:9)
+    at NextServer.createServer (E:\PROYECTO\frontend\node_modules\next\dist\server\next.js:147:16)
+    at async E:\PROYECTO\frontend\node_modules\next\dist\server\next.js:159:31
+    at async NextServer.prepare (E:\PROYECTO\frontend\node_modules\next\dist\server\next.js:134:24)
