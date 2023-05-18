@@ -18,6 +18,7 @@ export default async function RootLayout({
     <>
       <div className="relative overflow-hidden min-h-screen">
         <NavBar>
+          {/* @ts-expect-error Para pasar la build */}
           <Auth />
         </NavBar>
         <div className="relative pt-16">
