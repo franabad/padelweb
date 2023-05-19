@@ -1,9 +1,0 @@
-(node:5960) [DEP0005] DeprecationWarning: Buffer() is deprecated due to security and usability issues. Please use the Buffer.alloc(), Buffer.allocUnsafe(), or Buffer.from() methods instead.
-(Use `node --trace-deprecation ...` to show where the warning was created)
-warn  - You have enabled experimental feature (appDir) in next.config.js.
-warn  - Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
-
-[next-auth][warn][NEXTAUTH_URL] 
-https://next-auth.js.org/warnings#nextauth_url
-[next-auth][warn][NEXTAUTH_URL] 
-https://next-auth.js.org/warnings#nextauth_url
