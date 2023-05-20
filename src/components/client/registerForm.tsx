@@ -2,8 +2,9 @@
 
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { useForm } from 'react-hook-form'
+import { FormProvider, useForm } from 'react-hook-form'
 import '../../app/globals.css'
+import Input from './input'
 
 interface FormData {
   name: string
@@ -19,11 +20,7 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
 
 const RegisterForm = () => {
   const router = useRouter()
-  const {
-    register,
-    handleSubmit,
-    formState: { errors }
-  } = useForm<FormData>()
+  const form = useForm<FormData>()
 
   const onSubmit = (data: FormData) => {
     fetch(`http://${apiBaseUrl}/register`, {
@@ -72,74 +69,118 @@ const RegisterForm = () => {
           Create your account
         </h1>
 
-        <form
-          className="space-y-6 w-1/2"
-          // eslint-disable-next-line @typescript-eslint/no-misused-promises
-          onSubmit={handleSubmit(onSubmit)}
-        >
-          <label className="text-white block mb-3 mt-2 text-lg" htmlFor="name">
+        <FormProvider {...form}>
+          <form
+            className="space-y-6 w-1/2"
+            // eslint-disable-next-line @typescript-eslint/no-misused-promises
+            onSubmit={form.handleSubmit(onSubmit)}
+          >
+            <Input
+              name="name"
+              label="Nombre"
+              type="text"
+              placeholder="Elber"
+              validations={{ required: true }}
+              errorMessage="Este campo es obligatorio"
+            />
+
+            <Input
+              name="lastname"
+              label="Apellido"
+              type="text"
+              placeholder="Galarga"
+            />
+
+            <Input
+              name="email"
+              label="Email"
+              type="text"
+              placeholder="elber@galarga.com"
+              validations={{ required: true }}
+              errorMessage="Este campo es obligatorio"
+            />
+
+            <Input
+              name="password"
+              label="Password"
+              type="password"
+              placeholder="password"
+              validations={{ required: true }}
+              errorMessage="Este campo es obligatorio"
+            />
+            {/* <label  htmlFor="name">
             Nombre *
           </label>
           <input
-            className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
+
             type="text"
             id="name"
             placeholder="John"
             {...register('name', { required: true })}
           />
           {errors.name && (
-            <span className="text-red-700">Este campo es obligatorio.</span>
-          )}
+            <span >Este campo es obligatorio.</span>
+          )} */}
 
-          <label className="text-white block mb-3 mt-2 text-lg" htmlFor="name">
-            Apellido
-          </label>
-          <input
-            className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
-            type="text"
-            id="lastname"
-            placeholder="Doe"
-            {...register('lastname')}
-          />
-
-          <label className="text-white block mb-3 mt-2 text-lg" htmlFor="name">
-            Email *
-          </label>
-          <input
-            className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
-            type="text"
-            id="email"
-            placeholder="john@doe.com"
-            {...register('email', { required: true })}
-          />
-          {errors.email && (
-            <span className="text-red-700">Este campo es obligatorio.</span>
-          )}
-
-          <label className="text-white block mb-3 mt-2 text-lg" htmlFor="name">
-            Password *
-          </label>
-          <input
-            className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
-            type="password"
-            id="password"
-            placeholder="Password"
-            {...register('password', { required: true })}
-          />
-          {errors.password && (
-            <span className="text-red-700">Este campo es obligatorio.</span>
-          )}
-
-          <div className="items-end justify-end flex">
-            <Link
-              href="/login"
-              className="text-white hover:text-gray-400 underline cursor-pointer mr-5"
+            {/* <label
+              className="text-white block mb-3 mt-2 text-lg"
+              htmlFor="name"
             >
-              Have already an account? Log in
-            </Link>
-            <Button>Sign up</Button>
-          </div>
-        </form>
+              Apellido
+            </label>
+            <input
+              className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
+              type="text"
+              id="lastname"
+              placeholder="Doe"
+              {...register('lastname')}
+            />
+
+            <label
+              className="text-white block mb-3 mt-2 text-lg"
+              htmlFor="name"
+            >
+              Email *
+            </label>
+            <input
+              className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
+              type="text"
+              id="email"
+              placeholder="john@doe.com"
+              {...register('email', { required: true })}
+            />
+            {errors.email && (
+              <span className="text-red-700">Este campo es obligatorio.</span>
+            )}
+
+            <label
+              className="text-white block mb-3 mt-2 text-lg"
+              htmlFor="name"
+            >
+              Password *
+            </label>
+            <input
+              className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
+              type="password"
+              id="password"
+              placeholder="Password"
+              {...register('password', { required: true })}
+            />
+            {errors.password && (
+              <span className="text-red-700">Este campo es obligatorio.</span>
+            )}
+ */}
+            <div className="items-end justify-end flex">
+              <Link
+                href="/login"
+                className="text-white hover:text-gray-400 underline cursor-pointer mr-5"
+              >
+                Have already an account? Log in
+              </Link>
+              <Button>Sign up</Button>
+            </div>
+          </form>
+        </FormProvider>
       </main>
     </div>
   )
