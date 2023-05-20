@@ -4,7 +4,7 @@ import CredentialsProvider from 'next-auth/providers/credentials'
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL!
 
-console.log(apiBaseUrl)
+console.log('API url:', apiBaseUrl)
 
 export const authOptions: NextAuthOptions = {
   providers: [
