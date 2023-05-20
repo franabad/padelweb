@@ -1,6 +1,11 @@
 import NextAuth, { type NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
+// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL!
+
+console.log(apiBaseUrl)
+
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -25,7 +30,7 @@ export const authOptions: NextAuthOptions = {
         // e.g. return { id: 1, name: 'J Smith', email: 'jsmith@example.com' }
         // You can also use the `req` object to obtain additional parameters
         // (i.e., the request IP address)
-        const res = await fetch('http://localhost:4000/login', {
+        const res = await fetch(`http://${apiBaseUrl}/login`, {
           method: 'POST',
           body: JSON.stringify(credentials),
           headers: { 'Content-Type': 'application/json' },
