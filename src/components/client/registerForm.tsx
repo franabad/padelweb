@@ -108,68 +108,6 @@ const RegisterForm = () => {
               validations={{ required: true }}
               errorMessage="Este campo es obligatorio"
             />
-            {/* <label  htmlFor="name">
-            Nombre *
-          </label>
-          <input
-
-            type="text"
-            id="name"
-            placeholder="John"
-            {...register('name', { required: true })}
-          />
-          {errors.name && (
-            <span >Este campo es obligatorio.</span>
-          )} */}
-
-            {/* <label
-              className="text-white block mb-3 mt-2 text-lg"
-              htmlFor="name"
-            >
-              Apellido
-            </label>
-            <input
-              className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
-              type="text"
-              id="lastname"
-              placeholder="Doe"
-              {...register('lastname')}
-            />
-
-            <label
-              className="text-white block mb-3 mt-2 text-lg"
-              htmlFor="name"
-            >
-              Email *
-            </label>
-            <input
-              className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
-              type="text"
-              id="email"
-              placeholder="john@doe.com"
-              {...register('email', { required: true })}
-            />
-            {errors.email && (
-              <span className="text-red-700">Este campo es obligatorio.</span>
-            )}
-
-            <label
-              className="text-white block mb-3 mt-2 text-lg"
-              htmlFor="name"
-            >
-              Password *
-            </label>
-            <input
-              className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
-              type="password"
-              id="password"
-              placeholder="Password"
-              {...register('password', { required: true })}
-            />
-            {errors.password && (
-              <span className="text-red-700">Este campo es obligatorio.</span>
-            )}
- */}
             <div className="items-end justify-end flex">
               <Link
                 href="/login"
