@@ -3,11 +3,8 @@
 import '../../app/globals.css'
 import { useSession, signIn } from 'next-auth/react'
 import { useForm } from 'react-hook-form'
-// import { useEffect } from 'react'
-// import { useRouter } from 'next/navigation'
 
 const LoginForm = () => {
-  // const router = useRouter()
   const {
     register,
     handleSubmit,
@@ -15,6 +12,7 @@ const LoginForm = () => {
   } = useForm()
 
   const onSubmit = async (data: any) => {
+    console.log(process.env.NEXTAUTH_URL)
     await signIn('credentials', {
       email: data.email,
       password: data.password,
