@@ -2,7 +2,9 @@ import NextAuth, { type NextAuthOptions } from 'next-auth'
 import CredentialsProvider from 'next-auth/providers/credentials'
 
 // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL!
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
+  ? process.env.NEXT_PUBLIC_API_BASE_URL
+  : 'localhost:3001'
 
 console.log('API url:', apiBaseUrl)
 
@@ -50,7 +52,7 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: 'jwt',
-    maxAge: 10
+    maxAge: 1
   },
 
   pages: {
