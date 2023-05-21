@@ -19,11 +19,11 @@ export const authOptions: NextAuthOptions = {
       // You can pass any HTML attribute to the <input> tag through the object.
       credentials: {
         email: {
-          label: 'Email',
+          label: 'email',
           type: 'text',
-          placeholder: 'Email'
+          placeholder: 'email'
         },
-        password: { label: 'Password', type: 'password' }
+        password: { label: 'password', type: 'password' }
       },
       async authorize(credentials, req) {
         // You need to provide your own logic here that takes the credentials
@@ -38,14 +38,16 @@ export const authOptions: NextAuthOptions = {
           headers: { 'Content-Type': 'application/json' },
           credentials: 'include'
         })
+
         const user = await res.json()
 
         // If no error and we have user data, return it
-        // eslint-disable-next-line @typescript-eslint/strict-boolean-expressions
         if (user) {
+          console.log('user no es null')
           return user
         }
         // Return null if user data could not be retrieved
+        console.log('user es null')
         return null
       }
     })

@@ -12,7 +12,7 @@ export default async function RootLayout({
 }) {
   const session = await getServerSession(authOptions)
 
-  console.log(session)
+  console.log('Session en layout de (app)', session)
 
   return (
     <>

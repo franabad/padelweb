@@ -6,7 +6,7 @@ import LoginButton from '../client/loginButton'
 const Auth = async () => {
   const session = await getServerSession(authOptions)
 
-  console.log(session)
+  console.log('Sessión en authButtons', session)
 
   return (
     <div className="flex">
