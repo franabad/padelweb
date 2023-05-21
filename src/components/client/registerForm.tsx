@@ -96,7 +96,10 @@ const RegisterForm = () => {
               label="Email"
               type="text"
               placeholder="elber@galarga.com"
-              validations={{ required: true }}
+              validations={{
+                required: true,
+                pattern: /\S+@\S+\.\S+/
+              }}
               errorMessage="Este campo es obligatorio"
             />
 
@@ -104,8 +107,8 @@ const RegisterForm = () => {
               name="password"
               label="Password"
               type="password"
-              placeholder="password"
-              validations={{ required: true }}
+              placeholder="Password"
+              validations={{ required: true, minLength: 4 }}
               errorMessage="Este campo es obligatorio"
             />
             <div className="items-end justify-end flex">
