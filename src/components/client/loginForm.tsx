@@ -1,20 +1,26 @@
 'use client'
 
-import '../../app/globals.css'
-import { useSession, signIn } from 'next-auth/react'
-import { useForm, FormProvider } from 'react-hook-form'
-import Input from './input'
+import { signIn, useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { useState } from 'react'
+import { useSearchParams } from 'next/navigation'
+import { FormProvider, useForm } from 'react-hook-form'
+import '../../app/globals.css'
+import Input from './input'
 
 interface FormData {
   email: string
   password: string
 }
 
+const ErrorMessages = {
+  CredentialsSignin:
+    'Email o contraseña incorrectos. Por favor, inténtalo de nuevo.'
+}
+
 const LoginForm = () => {
   const form = useForm<FormData>()
-  const [loginError, setLoginError] = useState(false)
+  const searchParams = useSearchParams()
+  const error: string | null | undefined = searchParams?.get('error')
 
   const onSubmit = async (data: FormData) => {
     await signIn('credentials', {
@@ -82,13 +88,11 @@ const LoginForm = () => {
               validations={{ required: true }}
               errorMessage="Este campo es obligatorio"
             />
-              {loginError && (
+            {error?.length > 0 && (
               <>
-                <span className="text-red-600">
-                  Email o contraseña incorrectos. Por favor, inténtalo de nuevo.
-                </span>
+                <span className="text-red-600">{ErrorMessages[error]}</span>
               </>
-              )}
+            )}
             <div className="items-end justify-end flex">
               <Link
                 href="/register"
