@@ -12,7 +12,7 @@ const LoginForm = () => {
   } = useForm()
 
   const onSubmit = async (data: any) => {
-    console.log(process.env.NEXTAUTH_URL)
+    console.log('api dentro de onsubmit', process.env.NEXTAUTH_URL)
     await signIn('credentials', {
       email: data.email,
       password: data.password,
