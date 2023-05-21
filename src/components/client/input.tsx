@@ -33,8 +33,14 @@ function Input(props: {
         placeholder={placeholder}
         {...register(name, validations ? { ...validations } : undefined)}
       />
-      {errorMessage && errors[name] && (
+      {validations?.required && (errors[name]?.type === 'required') && (
         <span className="text-red-700">{errorMessage}</span>
+      )}
+      {validations?.pattern && errors[name] && errors[name]?.type === 'pattern' && (
+        <span className="text-red-700">El email introducido no es válido</span>
+      )}
+      {validations?.minLength && errors[name] && errors[name]?.type === 'minLength' && (
+        <span className="text-red-700">Escriba una contraseña de 4 carácteres o más</span>
       )}
     </>
   )
