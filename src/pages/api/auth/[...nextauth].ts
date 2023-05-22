@@ -41,11 +41,9 @@ export const authOptions: NextAuthOptions = {
 
         // If no error and we have user data, return it
         if (user) {
-          console.log('user no es null')
           return user
         }
         // Return null if user data could not be retrieved
-        console.log('user es null')
         return null
       }
     })
