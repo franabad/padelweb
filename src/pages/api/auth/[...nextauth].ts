@@ -6,8 +6,6 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
   ? process.env.NEXT_PUBLIC_API_BASE_URL
   : 'localhost:3001'
 
-console.log('API url:', apiBaseUrl)
-
 export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
@@ -54,7 +52,7 @@ export const authOptions: NextAuthOptions = {
   ],
   session: {
     strategy: 'jwt',
-    maxAge: 1
+    maxAge: 60
   },
 
   pages: {
