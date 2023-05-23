@@ -25,7 +25,7 @@ export default function RootLayout({
 }) {
   return (
     <html className={montserrat.className}>
-      <body className="w-screen h-full bg-[url('../../public/assets/fondo.jpg')] bg-cover bg-no-repeat bg-center shadow-[0_4px_30px_rgba(0,_0,_0,_0.1)]">
+      <body className='bg-slate-950'>
         <SessionProvider session={session}>{children}</SessionProvider>
       </body>
     </html>
