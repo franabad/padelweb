@@ -7,30 +7,36 @@ import {
 } from 'react-hook-form'
 
 function Input(props: {
+  id?: string
   name: string
-  label: string
+  label?: string
   type: string
   placeholder?: string
   validations?: RegisterOptions<FieldValues, string>
   errorMessage?: string
+  showRequired?: boolean
+  defaultValue?: string
+  autocomplete?: string
 }) {
   const {
     register,
     formState: { errors }
   } = useFormContext()
-  const { name, label, type, placeholder, validations, errorMessage } = props
+  const { name, label, type, placeholder, validations, errorMessage, defaultValue, autocomplete, showRequired = true } = props
 
   return (
     <>
-      <label className="text-white block mb-3 mt-2 text-lg" htmlFor={name}>
+      <label className="text-yellow-600 font-semibold text-lg" htmlFor={name}>
         {label}
-        {validations?.required && <span className="text-red-400"> *</span>}
+        {showRequired && validations?.required && <span className="text-red-400"> *</span>}
       </label>
       <input
         className="items-center bg-white/5 text-sm border border-gray-600 text-white rounded-lg block w-full p-3 placeholder-gray-400"
         type={type}
         id={name}
         placeholder={placeholder}
+        defaultValue={defaultValue}
+        autoComplete={autocomplete}
         {...register(name, validations ? { ...validations } : undefined)}
       />
       {validations?.required && (errors[name]?.type === 'required') && (
