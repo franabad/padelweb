@@ -5,7 +5,7 @@ import { type ReactNode } from 'react'
 
 const NavBar = ({ children }: { children: ReactNode }) => {
   return (
-    <nav className="bg-slate-950 w-full flex py-6 justify-between items-center navbar">
+    <nav className="bg-slate-900 w-full flex h-[70px] justify-between items-center navbar fixed z-50">
       <div className="list-none flex justify-end items-center flex-1">
         <ul className="list-none flex justify-end items-center flex-1">
           <li>
@@ -32,15 +32,7 @@ const NavBar = ({ children }: { children: ReactNode }) => {
               href="/faq"
               className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ml-20"
             >
-              Prices
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/faq"
-              className="block text-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent ml-20"
-            >
-              FAQ
+              Precios
             </Link>
           </li>
           <li className="mr-20 ml-20">{children}</li>
