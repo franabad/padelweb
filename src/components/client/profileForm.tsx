@@ -1,64 +1,99 @@
-/* eslint-disable react/no-unescaped-entities */
 'use client'
 
-// import { signIn, useSession } from 'next-auth/react'
-// import Link from 'next/link'
-// import { useSearchParams } from 'next/navigation'
-import { FormProvider, useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import Input from './input'
-// import { useEffect, useState } from 'react'
-// import { getServerSession } from 'next-auth'
-// import { authOptions } from '../../pages/api/auth/[...nextauth]'
-// import { authOptions } from '../../pages/api/auth/[...nextauth]'
-// import { getSession } from 'next-auth/react'
-// import Input from './input'
-// import { PhotoIcon, UserCircleIcon } from '@heroicons/react/20/solid'
-// import Input from './input'
-// import Link from 'next/link'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
+import { useEffect, useState } from 'react'
+import { FormProvider, useForm } from 'react-hook-form'
 
 interface FormData {
   email: string
   password: string
 }
 
-// const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
-//   ? process.env.NEXT_PUBLIC_API_BASE_URL
-//   : 'localhost:3001'
+interface UserData {
+  name: string
+  email: string
+  lastname: string
+  password: string
+}
 
-// const session = getSession()
-
-// console.log('Sesion del componente', session)
-
-// const getUserInfo = async () => {
-//   const session = await getSession()
-//   console.log('Email dentro del componente: ', session)
-
-//   const res = await fetch(`http://${apiBaseUrl}/login`, {
-//     method: 'POST',
-//     body: JSON.stringify(session?.user?.email),
-//     headers: { 'Content-Type': 'application/json' },
-//     credentials: 'include'
-//   })
-//   const data = await res.json()
-//   return data
-// }
+const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
+  ? process.env.NEXT_PUBLIC_API_BASE_URL
+  : 'localhost:3001'
 
 const ProfileForm = () => {
+  const router = useRouter()
+  const session = useSession()
   const form = useForm<FormData>()
+
+  const [data, setData] = useState<UserData | null >(null)
+
+  useEffect(() => {
+    async function enviarSesionALaAPI() {
+      const requestOptions = {
+        method: 'POST',
+        body: JSON.stringify({ email: session.data?.user?.email }),
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+      console.log('Esto es la session: ', session)
+      if (session.status === 'loading') {
+        console.log('Se mete al if de loading')
+      } else if (session.status === 'authenticated') {
+        console.log('Se mete al if de authenticated')
+        const response = await fetch(`http://${apiBaseUrl}/profile`, requestOptions)
+        const data = await response.json()
+
+        console.log('Esto es la data: ', data)
+        setData(data)
+      } else {
+        console.log('Se mete al else')
+        router.push('/')
+      }
+    }
+    if (session !== null) {
+      void enviarSesionALaAPI()
+    } else {
+      console.log('No hay sesion')
+      router.push('/')
+    }
+  }, [session])
+
+  // const onSubmit = async (data: FormData) => {
+  //   const res = await fetch(`http://${apiBaseUrl}/register`, {
+  //     method: 'POST',
+  //     body: JSON.stringify(data),
+  //     headers: {
+  //       'Content-Type': 'application/json'
+  //     },
+  //     credentials: 'include'
+  //   })
+  //   await res.json()
+  //     .then(() => {
+  //       // if (res.status === 200) { router.push('/') } else if (res.status === 502) { setEmailExists(true) }
+  //     })
+  //     .catch((err) => {
+  //       console.log('Se mete al catch')
+  //       console.log(err)
+  //     })
+  // }
 
   return (
     <main className="flex min-h-screen w-full justify-center">
-        <FormProvider {...form}>
-          <form className='py-[100px] '>
-            <div className="space-y-12">
-              <div className="border-b border-white/50 pb-12">
-                <h2 className="text-base font-semibold leading-7 text-white">Tu perfil</h2>
-                <p className="mt-1 text-sm leading-6 text-white">
-                  This information will be displayed publicly so be careful what you share.
-                </p>
-                <div className="mt-10 grid gap-x-6 gap-y-8 sm:grid-cols-6">
-                  <div className="col-span-4 w-4/6">
+      <FormProvider {...form}>
+        <form className='py-[70px] w-1/2 '>
+          <div className="space-y-12 bg-slate-900/40 px-20 pt-10">
+            <div className="border-b border-white/50 pb-12">
+              <h2 className="text-base font-semibold leading-7 text-white">Tu perfil</h2>
+              <p className="mt-1 text-sm leading-6 text-white">
+                This information will be displayed publicly so be careful what you share.
+              </p>
+              <div className="mt-10 flex flex-col space-y-7">
+                <div className='flex gap-5'>
+                  <div className="w-2/6">
                     <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">
                       Nombre
                     </label>
@@ -67,13 +102,11 @@ const ProfileForm = () => {
                         type="text"
                         name="name"
                         id="username"
-                        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                        defaultValue="Andrea"
+                        defaultValue={data?.name}
                         autocomplete="nope"
                       />
                     </div>
                   </div>
-
                   <div className="col-span-4 w-4/6">
                     <label htmlFor="username" className="block text-sm font-medium leading-6 text-white">
                       Apellidos
@@ -83,12 +116,12 @@ const ProfileForm = () => {
                         type="text"
                         name="lastname"
                         id="lastname"
-                        defaultValue="Tom Cook"
+                        defaultValue={data?.lastname}
                         autocomplete="nope"
                       />
                     </div>
                   </div>
-
+                </div>
                 <div className="col-span-full">
                   <label htmlFor="about" className="block text-sm font-medium leading-6 text-white">
                     Sobre mi
@@ -102,9 +135,8 @@ const ProfileForm = () => {
                       defaultValue={''}
                     />
                   </div>
-                  <p className="mt-3 text-sm leading-6 text-white">Write a few sentences about yourself.</p>
+                  <p className="mt-3 text-sm leading-6 text-white">Escribe un poco sobre ti</p>
                 </div>
-
                 <div className="col-span-full">
                   <label htmlFor="photo" className="block text-sm font-medium leading-6 text-white">
                     Cover
@@ -119,7 +151,6 @@ const ProfileForm = () => {
                     </button>
                   </div>
                 </div>
-
                 <div className="col-span-full">
                   <label htmlFor="cover-photo" className="block text-sm font-medium leading-6 text-white">
                     Foto
@@ -143,35 +174,48 @@ const ProfileForm = () => {
                 </div>
               </div>
             </div>
-
             <div className="pb-12">
               <h2 className="text-base font-semibold leading-7 text-white">Información Personal</h2>
-
-              <div className="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
-
-                <div className="sm:col-span-4">
-                  <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
-                    Email
-                  </label>
-                  <div className="mt-2">
-                    <Input
-                      id="email"
-                      name="email"
-                      type="email"
-                      autocomplete="nope"
-                    />
+              <div className="mt-10 flex flex-col space-y-5">
+                <div className='flex gap-5'>
+                  <div className="w-2/6">
+                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
+                      Email
+                    </label>
+                    <div className="mt-2">
+                      <Input
+                        id="email"
+                        name="email"
+                        type="email"
+                        autocomplete="nope"
+                        defaultValue={data?.email}
+                      />
+                    </div>
+                  </div>
+                  <div className="w-4/6">
+                    <label htmlFor="email" className="block text-sm font-medium leading-6 text-white">
+                      Password
+                    </label>
+                    <div className="mt-2">
+                      <Input
+                        id="password"
+                        name="password"
+                        type="password"
+                        autocomplete="nope"
+                        defaultValue={data?.password}
+                      />
+                    </div>
                   </div>
                 </div>
-
                 <div className="sm:col-span-3">
                   <label htmlFor="country" className="block text-sm font-medium leading-6 text-white">
                     Nivel de tenis
                   </label>
                   <div className="mt-2">
                     <select
-                      id="country"
-                      name="country"
-                      className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset bg-slate-900"
+                      id="tenis_level"
+                      name="tenis_level"
+                      className="block w-1/4 rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset bg-slate-900"
                     >
                       <option>1</option>
                       <option>1.25</option>
@@ -196,15 +240,15 @@ const ProfileForm = () => {
                     </select>
                   </div>
                 </div>
-                <div className="sm:col-span-3">
+                <div className="sm:col-span-3 w-1/4">
                   <label htmlFor="country" className="block text-sm font-medium leading-6 text-white">
                     Nivel de padel
                   </label>
                   <div className="mt-2">
                     <select
-                      id="country"
-                      name="country"
-                      autoComplete="country-name"
+                      id="padel_level"
+                      name="padel_level"
+                      autoComplete="nope"
                       className="block w-full rounded-md border-0 py-1.5 text-white shadow-sm ring-1 ring-inset bg-slate-900"
                     >
                       <option>1</option>
@@ -232,13 +276,8 @@ const ProfileForm = () => {
                 </div>
               </div>
             </div>
-
             <div className="border-b border-gray-900/10 pb-12">
               <h2 className="text-base font-semibold leading-7 text-white">Notifications</h2>
-              <p className="mt-1 text-sm leading-6 text-white">
-                We'll always let you know about important changes, but you pick what else you want to hear about.
-              </p>
-
               <div className="mt-10 space-y-10">
                 <fieldset>
                   <legend className="text-sm font-semibold leading-6 text-white">By Email</legend>
@@ -278,19 +317,18 @@ const ProfileForm = () => {
               </div>
             </div>
           </div>
-
-          <div className="mt-6 flex items-center justify-end gap-x-6 pt-10 border-t-2 border-white/20">
-            <button type="button" className="text-sm font-semibold leading-6 text-white">
+          <div className="mt-6 flex h-[100px] justify-end items-center gap-x-6 border-t-2 border-white/20">
+            <button type="button" className="font-semibold leading-6 text-white text-base h-1/2">
               Cancel
             </button>
             <button
               type="submit"
-              className="rounded-md bg-sky-950 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-sky-950/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              className="rounded-md text-base h-1/2 bg-sky-950 px-7 py-2 font-semibold text-white shadow-sm hover:bg-sky-950/50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
             >
               Save
             </button>
           </div>
-            </form>
+        </form>
       </FormProvider>
     </main>
   )
