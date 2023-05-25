@@ -2,7 +2,9 @@ import Link from 'next/link'
 import React from 'react'
 
 interface ModalRegisterProps {
-  open: any
+  open?: any
+  children?: any
+  onClose?: any
 }
 
 const ModalRegister = ({ open }: ModalRegisterProps) => {
