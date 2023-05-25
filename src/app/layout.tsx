@@ -25,9 +25,12 @@ export default function RootLayout({
 }) {
   return (
     <html className={montserrat.className}>
-      <body className='bg-slate-950'>
-        <SessionProvider session={session}>{children}</SessionProvider>
-      </body>
+      <head>
+        <title>Esports Center</title>
+        <body className='bg-slate-950'>
+          <SessionProvider session={session}>{children}</SessionProvider>
+        </body>
+      </head>
     </html>
   )
 }
