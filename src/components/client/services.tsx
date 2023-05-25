@@ -45,13 +45,13 @@ const Profile = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href="/tenis/horario"
+                  href="/padel/horario"
                   className={classNames(
                     active ? 'bg-sky-900/50 text-white' : 'text-white',
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  Tenis
+                  Pádel
                 </Link>
               )}
             </Menu.Item>
@@ -77,7 +77,7 @@ const Profile = () => {
                     'block px-4 py-2 text-sm'
                   )}
                 >
-                  Pádel
+                  Tenis
                 </Link>
               )}
             </Menu.Item>
