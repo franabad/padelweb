@@ -1,11 +1,12 @@
 'use client'
 
 import Link from 'next/link'
-import { useRouter } from 'next/navigation'
+// import { useRouter } from 'next/navigation'
 import { FormProvider, useForm } from 'react-hook-form'
 import '../../app/globals.css'
 import Input from './input'
 import { useState } from 'react'
+import ModalRegister from '../server/modalRegister'
 
 interface FormData {
   name: string
@@ -20,9 +21,10 @@ const apiBaseUrl = process.env.NEXT_PUBLIC_API_BASE_URL
   : 'localhost:3001'
 
 const RegisterForm = () => {
-  const router = useRouter()
+  // const router = useRouter()
   const form = useForm<FormData>()
   const [emailExists, setEmailExists] = useState<boolean>(false)
+  const [showModal, setShowModal] = useState(false)
 
   const onSubmit = async (data: FormData) => {
     const res = await fetch(`http://${apiBaseUrl}/register`, {
@@ -35,9 +37,10 @@ const RegisterForm = () => {
     })
     await res.json()
       .then(() => {
-        if (res.status === 200) { router.push('/') } else if (res.status === 502) { setEmailExists(true) }
+        if (res.status === 200) { setShowModal(true) } else if (res.status === 502) { setEmailExists(true) }
       })
       .catch((err) => {
+        console.log('Se mete al catch')
         console.log(err)
       })
   }
@@ -106,7 +109,7 @@ const RegisterForm = () => {
                 errorMessage="Este campo es obligatorio"
               />
               {emailExists && (
-              <span className="text-red-600">El email introducido ya existe</span>
+                <span className="text-red-600">El email introducido ya existe</span>
               )}
               <Input
                 name="password"
@@ -125,6 +128,9 @@ const RegisterForm = () => {
               </div>
             </form>
           </FormProvider>
+          {showModal && (
+            <ModalRegister open={showModal} />
+          )}
         </div>
       </main>
     </div>
