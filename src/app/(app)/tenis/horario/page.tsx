@@ -1,10 +1,10 @@
 'use client'
-import Horario from '@/components/client/horarioTenis'
+import Horario from '@/components/client/horarioPadel'
 
-const HorarioTennis = () => {
+const HorarioPadel = () => {
   return (
     <Horario />
   )
 }
 
-export default HorarioTennis
+export default HorarioPadel
