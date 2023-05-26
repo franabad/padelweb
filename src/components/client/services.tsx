@@ -7,7 +7,7 @@ function classNames(...classes: any[]) {
   return classes.filter(Boolean).join(' ')
 }
 
-const Profile = () => {
+const Services = () => {
   // const [showServices, setShowServices] = useState<boolean>(false)
 
   return (
@@ -88,4 +88,4 @@ const Profile = () => {
   )
 }
 
-export default Profile
+export default Services
