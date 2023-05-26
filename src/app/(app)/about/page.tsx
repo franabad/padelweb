@@ -6,7 +6,9 @@ const Page = async () => {
 
   // console.log('Session en about page', session)
   return (
-    <div className="text-white pt-[70px]">Somos los mejores</div>
+    <div className="flex justify-center items-center w-screen h-screen">
+      <p className="text-red-800 pt-[70px] text-4xl">Work in progress</p>
+    </div>
   )
 }
 
