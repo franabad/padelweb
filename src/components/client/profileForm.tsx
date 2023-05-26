@@ -62,25 +62,6 @@ const ProfileForm = () => {
     }
   }, [session])
 
-  // const onSubmit = async (data: FormData) => {
-  //   const res = await fetch(`http://${apiBaseUrl}/register`, {
-  //     method: 'POST',
-  //     body: JSON.stringify(data),
-  //     headers: {
-  //       'Content-Type': 'application/json'
-  //     },
-  //     credentials: 'include'
-  //   })
-  //   await res.json()
-  //     .then(() => {
-  //       // if (res.status === 200) { router.push('/') } else if (res.status === 502) { setEmailExists(true) }
-  //     })
-  //     .catch((err) => {
-  //       console.log('Se mete al catch')
-  //       console.log(err)
-  //     })
-  // }
-
   return (
     <main className="flex min-h-screen w-full justify-center">
       <FormProvider {...form}>

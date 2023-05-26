@@ -13,7 +13,7 @@ const Hero = () => {
           </div>
         </div>
       </header>
-      <section className="bg-black h-screen w-screen relative overflow-hidden flex">
+      <section className="h-screen w-screen relative overflow-hidden flex">
         <div className='absolute z-20 w-full flex'>
           <video autoPlay muted loop className='w-full h-full' src='/video.mp4'></video>
         </div>

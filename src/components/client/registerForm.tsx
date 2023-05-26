@@ -40,7 +40,6 @@ const RegisterForm = () => {
         if (res.status === 200) { setShowModal(true) } else if (res.status === 502) { setEmailExists(true) }
       })
       .catch((err) => {
-        console.log('Se mete al catch')
         console.log(err)
       })
   }
@@ -78,7 +77,7 @@ const RegisterForm = () => {
           </h2>
         </div>
       </header>
-      <main className="bg-slate-950 flex flex-col items-center justify-center min-h-screen w-1/2">
+      <div className="bg-slate-950 flex flex-col items-center justify-center min-h-screen w-1/2">
         <div className='w-[423.58px]'>
           <h1 className="text-4xl font-bold mb-24 tracking-tigh text-white">
             Create your account
@@ -140,7 +139,7 @@ const RegisterForm = () => {
             <ModalRegister open={showModal} />
           )}
         </div>
-      </main>
+      </div>
     </div>
   )
 }
