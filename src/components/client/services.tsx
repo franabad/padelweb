@@ -32,7 +32,7 @@ const Services = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href="#"
+                  href="/restaurant"
                   className={classNames(
                     active ? 'bg-sky-900/50 text-white' : 'text-white',
                     'block px-4 py-2 text-sm'
@@ -45,7 +45,7 @@ const Services = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href="/padel/horario"
+                  href="/padel/matches"
                   className={classNames(
                     active ? 'bg-sky-900/50 text-white' : 'text-white',
                     'block px-4 py-2 text-sm'
@@ -58,7 +58,7 @@ const Services = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href="#"
+                  href="/computers"
                   className={classNames(
                     active ? 'bg-sky-900/50 text-white' : 'text-white',
                     'block px-4 py-2 text-sm'
@@ -71,7 +71,7 @@ const Services = () => {
             <Menu.Item>
               {({ active }) => (
                 <Link
-                  href="#"
+                  href="/tenis"
                   className={classNames(
                     active ? 'bg-sky-900/50 text-white' : 'text-white',
                     'block px-4 py-2 text-sm'
