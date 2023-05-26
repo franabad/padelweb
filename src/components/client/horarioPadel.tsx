@@ -44,7 +44,7 @@ const TableCells = ({ cellId, rowIndex, texto, onMatchSelected }: TableCellProps
 
   return (
     <td className='border border-slate-600'>
-      <button className=' p-5 w-full h-full items-center justify-center' onClick={handleOpenModal}>{texto}</button>
+      <button className=' p-5 w-full h-full items-center justify-center hover:bg-white/20' onClick={handleOpenModal}>{texto}</button>
     </td>
   )
 }
@@ -63,7 +63,7 @@ const Horario = () => {
       <div>
         <table className="border-collapse text-white border border-slate-600">
           <thead>
-            <tr className='[&>th]:p-4 [&>th]: bg-black'>
+            <tr className='[&>th]:p-4 bg-black'>
               <th className="border border-slate-600">Pista 1</th>
               <th className="border border-slate-600">Pista 2</th>
               <th className="border border-slate-600">Pista 3</th>
